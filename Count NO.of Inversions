@@ -1,0 +1,48 @@
+# count no. of inversions
+arr=[70,30,20,10,5]
+
+def InversionProcedure(left_arr,right_arr,total_inver):
+    i=0
+    j=0
+    inv=0
+    arr1=[]
+    
+    while(i<len(left_arr) and j<len(right_arr)):
+        if (left_arr[i]>right_arr[j]):
+            arr1.append(right_arr[j])
+            j+=1
+            # print("jnjdnj",left_arr,right_arr)
+            # key logic
+            inv=inv+len(left_arr)-i
+            
+        else:
+            arr1.append(left_arr[i])
+            i+=1
+    while(i<len(left_arr)):
+        arr1.append(left_arr[i])
+    
+        i+=1
+    while(j<len(right_arr)):
+        arr1.append(right_arr[j])
+        j+=1
+    # print(arr1)
+    return [arr1,total_inver+inv]
+            
+    
+i=0
+j=len(arr)-1
+
+def Inversions(arr,i,j,total_inver):
+   
+    if (i==j):
+        # print([[arr[i]],0])
+        return [[arr[i]],0]
+    else:
+        mid=i+(j-i)//2
+        
+        left_inv=Inversions(arr,i,mid,total_inver)
+        # print(left_inv)
+        right_inv=Inversions(arr,mid+1,j,total_inver)
+
+        return InversionProcedure(left_inv[0],right_inv[0],left_inv[1]+right_inv[1])
+print(Inversions(arr,i,j,0))
