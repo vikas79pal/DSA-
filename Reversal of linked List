@@ -1,0 +1,54 @@
+# create single linked list
+
+class Node():
+    def __init__(self,data):
+        self.data=data
+        self.next=None
+class LL():
+    def __init__(self):
+        self.head=None
+    
+    # insert node form head
+    def insertAtStart(self,data):
+        curr=self.head
+        newNode=Node(data)
+        if (curr is None):
+            self.head=newNode
+        else:
+            self.head,newNode.next=newNode,self.head
+    
+    # print element in linked list
+    def printLL(self):
+        curr=self.head
+        while(curr):
+            print(curr.data)
+            curr=curr.next
+        print("______________-")
+    
+    # reverse linked list
+    def Reversal(self):
+        curr=self.head
+        Next=None
+        prev=None
+      
+        while(curr):
+            
+            Next=curr.next
+            # breaking the link with next and pointing towards prev pointer
+            curr.next=prev
+            # pointing prev to current and incremnting current with next
+            prev=curr
+            curr=Next
+# at end pointing head to prev
+        self.head=prev
+        
+    
+L=LL()
+L.insertAtStart(2)
+L.insertAtStart(3)
+L.insertAtStart(100)
+L.insertAtStart(11)
+L.printLL()
+L.Reversal()
+L.printLL()
+        
