@@ -1,0 +1,89 @@
+# create single linked list
+
+class Node():
+    def __init__(self,data):
+        self.data=data
+        self.next=None
+class LL():
+    def __init__(self):
+        self.head=None
+    
+    # insert node form head
+    def insertAtStart(self,data):
+        curr=self.head
+        newNode=Node(data)
+        if (curr is None):
+            self.head=newNode
+        else:
+            self.head,newNode.next=newNode,self.head
+    
+    # print element in linked list
+    def printLL(self):
+        curr=self.head
+        while(curr):
+            print(curr.data)
+            curr=curr.next
+        print("______________-")
+    
+    # reverse linked list
+    def Reversal(self):
+        curr=self.head
+        Next=None
+        prev=None
+      
+        while(curr):
+            
+            Next=curr.next
+            curr.next=prev
+            prev=curr
+            curr=Next
+        self.head=prev
+    
+    def creatingCycle(self):
+        curr=self.head
+        curr=curr.next #3
+        temp_3=curr
+        curr=curr.next
+        curr=curr.next #11
+        curr.next=temp_3
+        temp_3.next=curr.next
+        
+    # detecting cycle in ll
+    def CycleDetection(self):
+        fast=self.head
+        slow=self.head
+        while(slow !=None and fast!=None and fast.next!=None):
+            slow=slow.next
+            fast=fast.next.next
+            if (fast==slow):
+                print("cycle is Present")
+                return
+        print("not present")
+        return
+    def Deletion(self,pos):
+        count=1
+        prev=None
+        curr=self.head
+        if pos==1:
+            self.head=self.head.next
+            return
+        while(pos!=count and curr):
+            prev=curr
+            curr=curr.next
+            count+=1
+        prev.next=curr.next
+        
+            
+            
+    
+L=LL()
+L.insertAtStart(2)
+L.insertAtStart(3)
+L.insertAtStart(100)
+L.insertAtStart(11)
+L.printLL()
+# L.Reversal()
+# deletion 
+L.Deletion(1)
+L.printLL()
+        
