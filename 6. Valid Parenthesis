@@ -1,0 +1,17 @@
+exp="({})["
+i=0
+open1=[]
+while(i<len(exp)):
+    if ((exp[i]=="(" or exp[i]=="{" or exp[i]=="[")):
+        open1.append(exp[i])
+    else: # if top most value of open1 stack is open and exp[i] is closed then pop the top element from open1
+        if ((open1[len(open1)-1]=="{" and exp[i]=="}") or (open1[len(open1)-1]=="(" and exp[i]==")") or (open1[len(open1)-1]=="[" and exp[i]=="]")):
+            open1.pop()
+        else: # if not then break 
+            break
+    i+=1
+    
+if (len(open1)==0):
+    print("valid",open1)
+else:
+    print("inValid",open1)
