@@ -1,0 +1,64 @@
+class Node:
+    def __init__(self,data):
+        self.data=data
+        self.left=None
+        self.right=None
+root=Node(1)
+root.left=Node(2)
+root.right=Node(3)
+root.left.left=Node(4)
+root.left.right=Node(5)
+
+# PreOrder ZTraversing Iterative approach
+# stack=[root]
+# curr=root
+# while(len(stack)>0):
+#     curr=stack.pop()
+#     print(curr.data)
+#     if (curr.right is not None):
+#         stack.append(curr.right)
+#     if (curr.left is not None):
+#         stack.append(curr.left)
+
+
+# PostOrder 
+# stack1=[root]
+# stack2=[]
+
+# curr=root
+# while (len(stack1)>0):
+#     curr=stack1.pop()
+#     stack2.append(curr)
+    
+#     if curr.left is not None:
+#         stack1.append(curr.left)
+#     if curr.right is not None:
+#         stack1.append(curr.right)
+
+# while(len(stack2)>0):
+#     print(stack2.pop().data)
+# ------------------------------
+            
+
+# inOrder Traversing
+# nodeStack=[]
+# curr=root
+# while(True):
+#     if (curr is not None):
+#         nodeStack.append(curr)
+#         curr=curr.left
+#     elif(nodeStack):
+#         curr=nodeStack.pop()
+#         print(curr.data)
+#         curr=curr.right
+#     else:
+#         break
+
+#recursion approach
+# def PreOrder(root):
+#     if (root is None):
+#         return
+#     print(root.data)
+#     PreOrder(root.left)
+#     PreOrder(root.right)
+# PreOrder(root)
